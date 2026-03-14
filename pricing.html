@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="List your luxury assets on LUL. Start free, grow with us. Plans for every dealer — from boutique to global network." />
+  <title>Dealer Plans — LUL Luxury Unique Listings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" role="alertdialog">
+  <div class="cookie-text"><strong>We use cookies</strong> — technical cookies are essential. With your consent we also collect anonymous analytics. <a href="#">Learn more</a></div>
+  <div class="cookie-actions">
+    <button class="btn-cookie-all">Accept All</button>
+    <button class="btn-cookie-tech">Essential Only</button>
+    <button class="btn-cookie-customize">Customize</button>
+  </div>
+</div>
+<div id="cookie-modal" role="dialog" aria-modal="true">
+  <div class="cookie-modal-box">
+    <h2>Cookie Preferences</h2>
+    <p>Choose which cookies to allow.</p>
+    <div class="cookie-toggle-row">
+      <div><div class="cookie-toggle-label">Essential Cookies</div><div class="cookie-toggle-desc">Always active.</div></div>
+      <label class="toggle"><input type="checkbox" checked disabled /><span class="toggle-slider"></span></label>
+    </div>
+    <div class="cookie-toggle-row">
+      <div><div class="cookie-toggle-label">Analytics Cookies</div><div class="cookie-toggle-desc">Anonymous usage data.</div></div>
+      <label class="toggle"><input id="toggle-analytics" type="checkbox" /><span class="toggle-slider"></span></label>
+    </div>
+    <div class="cookie-modal-btns">
+      <button class="btn-modal-cancel">Cancel</button>
+      <button class="btn-modal-save">Save Preferences</button>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu">
+  <button class="mobile-menu-close"><i class="fa fa-times"></i></button>
+  <a href="index.html" data-i18n="nav_homes">Homes</a>
+  <a href="listings.html?cat=cars" data-i18n="nav_cars">Cars</a>
+  <a href="listings.html?cat=yachts" data-i18n="nav_yachts">Yachts</a>
+  <a href="listings.html?cat=jets" data-i18n="nav_jets">Private Jets</a>
+  <a href="listings.html?cat=villas" data-i18n="nav_villas">Villas</a>
+  <a href="pricing.html" style="color:var(--color-gold);margin-top:12px">List with Us</a>
+</nav>
+
+<!-- Header -->
+<header class="site-header">
+  <a href="index.html" class="header-logo">
+    <div class="logo-mark">L</div>
+    <div><span class="logo-text">LUL</span><span class="logo-tagline">Luxury Unique Listings</span></div>
+  </a>
+  <nav class="header-nav">
+    <a href="listings.html?cat=homes"     data-i18n="nav_homes">Homes</a>
+    <a href="listings.html?cat=cars"      data-i18n="nav_cars">Cars</a>
+    <a href="listings.html?cat=yachts"    data-i18n="nav_yachts">Yachts</a>
+    <a href="listings.html?cat=jets"      data-i18n="nav_jets">Private Jets</a>
+    <a href="listings.html?cat=villas"    data-i18n="nav_villas">Villas</a>
+    <a href="listings.html?cat=watches"   data-i18n="nav_watches">Watches</a>
+    <a href="listings.html?cat=jewellery" data-i18n="nav_jewellery">Jewellery</a>
+    <a href="listings.html?cat=other"     data-i18n="nav_other">Other</a>
+  </nav>
+  <div class="header-right">
+    <div class="lang-switcher">
+      <button class="lang-btn"><span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span><span class="lang-arrow">▼</span></button>
+      <div class="lang-dropdown"></div>
+    </div>
+    <a href="pricing.html" class="btn-publish active" data-i18n="publish">List with Us</a>
+    <a href="#" class="btn-login" data-i18n="login">Sign In</a>
+    <button class="header-menu-toggle"><i class="fa fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- ══ PRICING HERO ══ -->
+<section class="pricing-hero">
+  <div class="container">
+    <p class="section-eyebrow" style="color:var(--color-gold);text-align:center;margin-bottom:12px">For Dealers &amp; Private Sellers</p>
+    <h1>Simple, Transparent Pricing</h1>
+    <p>Start for free. Scale as you grow. No hidden fees, no long-term lock-ins.</p>
+
+    <!-- Monthly / Annual Toggle -->
+    <div class="pricing-toggle">
+      <span>Monthly</span>
+      <label class="toggle" style="display:inline-block">
+        <input type="checkbox" id="pricing-toggle" />
+        <span class="toggle-slider"></span>
+      </label>
+      <span>Annual <span class="pricing-badge" id="save-badge" style="display:none">SAVE 17%</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING CARDS ══ -->
+<section class="section">
+  <div class="container">
+    <div class="pricing-grid">
+
+      <!-- ── TRIAL ── -->
+      <div class="pricing-card">
+        <div class="pricing-plan-name">Trial</div>
+        <div class="pricing-price" data-price-monthly="0">Free</div>
+        <div class="pricing-period"><span data-price-period="/">for 3 months</span></div>
+        <p class="pricing-desc">
+          The perfect way to test the platform with zero commitment.
+          5 listings, no credit card required.
+        </p>
+        <ul class="pricing-features">
+          <li><i class="fa fa-check"></i> 5 active listings</li>
+          <li><i class="fa fa-check"></i> Standard visibility</li>
+          <li><i class="fa fa-check"></i> LUL watermark on images</li>
+          <li><i class="fa fa-check"></i> Basic dealer profile</li>
+          <li><i class="fa fa-check"></i> Email support</li>
+          <li class="disabled"><i class="fa fa-times"></i> Analytics dashboard</li>
+          <li class="disabled"><i class="fa fa-times"></i> Featured placement</li>
+          <li class="disabled"><i class="fa fa-times"></i> API inventory feed</li>
+        </ul>
+        <a href="#trial-form" class="btn-plan">Start Free Trial</a>
+      </div>
+
+      <!-- ── STARTER ── -->
+      <div class="pricing-card">
+        <div class="pricing-plan-name">Starter</div>
+        <div class="pricing-price" data-price-monthly="0">Free</div>
+        <div class="pricing-period"><span data-price-period="">Forever</span></div>
+        <p class="pricing-desc">
+          For individual sellers and small boutique dealers.
+          Get your first listing live today at no cost.
+        </p>
+        <ul class="pricing-features">
+          <li><i class="fa fa-check"></i> 1 active listing</li>
+          <li><i class="fa fa-check"></i> Standard visibility</li>
+          <li><i class="fa fa-check"></i> LUL co-branded badge</li>
+          <li><i class="fa fa-check"></i> Dealer profile page</li>
+          <li><i class="fa fa-check"></i> Contact form</li>
+          <li class="disabled"><i class="fa fa-times"></i> Analytics</li>
+          <li class="disabled"><i class="fa fa-times"></i> Featured placement</li>
+          <li class="disabled"><i class="fa fa-times"></i> Referral bonus</li>
+        </ul>
+        <a href="#" class="btn-plan">Get Started Free</a>
+      </div>
+
+      <!-- ── PROFESSIONAL (FEATURED) ── -->
+      <div class="pricing-card featured">
+        <span class="pricing-card-recommended">Most Popular</span>
+        <div class="pricing-plan-name gold">Professional</div>
+        <div class="pricing-price">€<span data-price-monthly="149">149</span></div>
+        <div class="pricing-period"><span data-price-period="">/ month</span></div>
+        <p class="pricing-desc">
+          For established dealers ready to grow their reach and track performance
+          with advanced analytics.
+        </p>
+        <ul class="pricing-features">
+          <li><i class="fa fa-check"></i> 25 active listings</li>
+          <li><i class="fa fa-check"></i> <strong>Featured</strong> placement in search</li>
+          <li><i class="fa fa-check"></i> No watermark</li>
+          <li><i class="fa fa-check"></i> Analytics dashboard (basic)</li>
+          <li><i class="fa fa-check"></i> Co-branded dealer page</li>
+          <li><i class="fa fa-check"></i> Priority email &amp; chat support</li>
+          <li><i class="fa fa-check"></i> Referral bonus credits</li>
+          <li class="disabled"><i class="fa fa-times"></i> API inventory feed</li>
+        </ul>
+        <a href="#trial-form" class="btn-plan gold">Start 30-Day Free Trial</a>
+      </div>
+
+      <!-- ── ELITE ── -->
+      <div class="pricing-card">
+        <div class="pricing-plan-name">Elite</div>
+        <div class="pricing-price">€<span data-price-monthly="349">349</span></div>
+        <div class="pricing-period"><span data-price-period="">/ month</span></div>
+        <p class="pricing-desc">
+          For premium dealers who want maximum exposure, dedicated support,
+          and full platform access.
+        </p>
+        <ul class="pricing-features">
+          <li><i class="fa fa-check"></i> <strong>Unlimited</strong> listings</li>
+          <li><i class="fa fa-check"></i> Top placement — always first</li>
+          <li><i class="fa fa-check"></i> Advanced analytics + reports</li>
+          <li><i class="fa fa-check"></i> Dedicated Account Manager</li>
+          <li><i class="fa fa-check"></i> API inventory feed</li>
+          <li><i class="fa fa-check"></i> Co-branded &amp; promo campaigns</li>
+          <li><i class="fa fa-check"></i> Referral bonus credits</li>
+          <li><i class="fa fa-check"></i> Early access to new features</li>
+        </ul>
+        <a href="#trial-form" class="btn-plan dark">Start 30-Day Free Trial</a>
+      </div>
+
+      <!-- ── ENTERPRISE ── -->
+      <div class="pricing-card">
+        <div class="pricing-plan-name">Enterprise</div>
+        <div class="pricing-price" style="font-size:1.8rem">Custom</div>
+        <div class="pricing-period">Tailored to your needs</div>
+        <p class="pricing-desc">
+          For networks, groups and large-scale operators who need white-label
+          solutions and API integrations.
+        </p>
+        <ul class="pricing-features">
+          <li><i class="fa fa-check"></i> Everything in Elite</li>
+          <li><i class="fa fa-check"></i> White-label branding option</li>
+          <li><i class="fa fa-check"></i> Revenue share model (5–10%)</li>
+          <li><i class="fa fa-check"></i> Full API &amp; inventory sync</li>
+          <li><i class="fa fa-check"></i> Multi-dealer sub-accounts</li>
+          <li><i class="fa fa-check"></i> Custom SLA &amp; legal support</li>
+          <li><i class="fa fa-check"></i> Dedicated tech onboarding</li>
+          <li><i class="fa fa-check"></i> Quarterly business reviews</li>
+        </ul>
+        <a href="#trial-form" class="btn-plan">Contact Sales</a>
+      </div>
+
+    </div><!-- /pricing-grid -->
+  </div>
+</section>
+
+<!-- ══ EXTRAS / BONUS ══ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">Added Value</p>
+      <h2 class="section-title">More Than Just Listings</h2>
+      <p class="section-desc">Every plan includes exclusive perks designed to help you sell faster and grow your brand.</p>
+    </div>
+    <div class="pricing-extras">
+      <div class="pricing-extra">
+        <div class="pricing-extra-icon"><i class="fa fa-gift"></i></div>
+        <h3>Referral Bonus</h3>
+        <p>Earn listing credits for every dealer you invite. The more dealers join your network, the more visibility you get — for free.</p>
+      </div>
+      <div class="pricing-extra">
+        <div class="pricing-extra-icon"><i class="fa fa-plug"></i></div>
+        <h3>Free API Integration</h3>
+        <p>Sync your existing inventory automatically. We offer free API feeds for dealers on Elite and Enterprise plans, with technical onboarding support.</p>
+      </div>
+      <div class="pricing-extra">
+        <div class="pricing-extra-icon"><i class="fa fa-chart-line"></i></div>
+        <h3>Advanced Analytics</h3>
+        <p>Track views, enquiries, favourites and conversion rates on each listing. Export reports and optimise your strategy with real data.</p>
+      </div>
+      <div class="pricing-extra">
+        <div class="pricing-extra-icon"><i class="fa fa-handshake"></i></div>
+        <h3>Revenue Share</h3>
+        <p>On our Enterprise plan, benefit from a transparent 5–10% commission-based model — you only pay when you sell. Low risk, high reward.</p>
+      </div>
+      <div class="pricing-extra">
+        <div class="pricing-extra-icon"><i class="fa fa-star"></i></div>
+        <h3>Co-Branded Promotions</h3>
+        <p>Get featured in LUL newsletters, social media spotlights and seasonal campaigns. Build your brand alongside ours for maximum reach.</p>
+      </div>
+      <div class="pricing-extra">
+        <div class="pricing-extra-icon"><i class="fa fa-users"></i></div>
+        <h3>Exclusive Dealer Community</h3>
+        <p>Join our private dealer network. Access exclusive market insights, networking events, and collaborate with top dealers across 140+ countries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURE COMPARISON TABLE ══ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">Compare Plans</p>
+      <h2 class="section-title">Everything at a Glance</h2>
+    </div>
+    <div class="comparison-table-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Trial</th>
+            <th>Starter</th>
+            <th class="featured-col">Professional</th>
+            <th>Elite</th>
+            <th>Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="category-row"><td colspan="6">Listings</td></tr>
+          <tr><td>Active Listings</td><td>5</td><td>1</td><td><strong>25</strong></td><td>Unlimited</td><td>Unlimited</td></tr>
+          <tr><td>Images per Listing</td><td>8</td><td>8</td><td><strong>30</strong></td><td>50</td><td>50</td></tr>
+          <tr><td>Video Upload</td><td class="cross">—</td><td class="cross">—</td><td><strong>1 / listing</strong></td><td>3 / listing</td><td>Unlimited</td></tr>
+          <tr><td>360° / Virtual Tour</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td><td class="check">✓</td></tr>
+
+          <tr class="category-row"><td colspan="6">Visibility</td></tr>
+          <tr><td>Search Placement</td><td>Standard</td><td>Standard</td><td><strong>Featured</strong></td><td>Top</td><td>Top</td></tr>
+          <tr><td>Homepage Feature</td><td class="cross">—</td><td class="cross">—</td><td>Occasional</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Newsletter Feature</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td>Quarterly</td><td>Monthly</td></tr>
+          <tr><td>LUL Watermark</td><td>Yes</td><td>Yes</td><td><strong>No</strong></td><td>No</td><td>No</td></tr>
+
+          <tr class="category-row"><td colspan="6">Analytics &amp; Tools</td></tr>
+          <tr><td>Analytics Dashboard</td><td class="cross">—</td><td class="cross">—</td><td>Basic</td><td>Advanced</td><td>Custom</td></tr>
+          <tr><td>Enquiry Stats</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Export Reports</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>API Feed</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓ Free</td><td class="check">✓ Full</td></tr>
+
+          <tr class="category-row"><td colspan="6">Support &amp; Community</td></tr>
+          <tr><td>Support Channel</td><td>Email</td><td>Email</td><td>Email + Chat</td><td>Priority + Phone</td><td>Dedicated Manager</td></tr>
+          <tr><td>Onboarding Call</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Dealer Community</td><td class="cross">—</td><td class="cross">—</td><td>Standard</td><td>Premium</td><td>Exclusive</td></tr>
+          <tr><td>Referral Bonus</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Revenue Share Option</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td>5–10%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRIAL / CONTACT FORM ══ -->
+<section class="section section-alt" id="trial-form">
+  <div class="container">
+    <div class="trial-form-section">
+      <p class="section-eyebrow" style="color:var(--color-gold);margin-bottom:12px">No Credit Card Required</p>
+      <h2>Start Your Free Trial Today</h2>
+      <p>Tell us a bit about yourself and we'll set up your dealer account within 24 hours.</p>
+      <form class="trial-form" onsubmit="event.preventDefault(); this.innerHTML='<p style=\'color:var(--color-gold);font-size:1.1rem\'>✓ Request received! We\'ll be in touch within 24 hours.</p>'">
+        <input type="text"  placeholder="Your full name"      required aria-label="Name" />
+        <input type="email" placeholder="Work email address"  required aria-label="Email" />
+        <input type="text"  placeholder="Company / Brand name" required aria-label="Company" />
+        <select aria-label="Plan interest" style="flex:1;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);border-radius:var(--radius-sm);padding:12px 16px;font-size:0.875rem;color:rgba(255,255,255,0.7);outline:none;min-width:0">
+          <option value="">Interested in…</option>
+          <option>Trial (3 months free)</option>
+          <option>Starter (always free)</option>
+          <option>Professional</option>
+          <option>Elite</option>
+          <option>Enterprise / Custom</option>
+        </select>
+        <button type="submit"><i class="fa fa-paper-plane"></i> Send Request</button>
+      </form>
+      <p style="color:rgba(255,255,255,0.35);font-size:0.78rem;margin-top:16px">
+        By submitting this form you agree to our Privacy Policy. We'll never share your data with third parties.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="section">
+  <div class="container" style="max-width:720px">
+    <div class="section-header">
+      <p class="section-eyebrow">FAQ</p>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Can I upgrade or downgrade my plan at any time?
+        <i class="fa fa-plus faq-icon"></i>
+      </div>
+      <div class="faq-answer">Yes. You can change your plan at any time from your dealer dashboard. Upgrades take effect immediately; downgrades at the end of the current billing period.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Is there a long-term contract?
+        <i class="fa fa-plus faq-icon"></i>
+      </div>
+      <div class="faq-answer">No. All plans are month-to-month (or annual if you choose). Cancel anytime with no penalty. We earn your loyalty by delivering value, not by locking you in.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        How does the referral bonus work?
+        <i class="fa fa-plus faq-icon"></i>
+      </div>
+      <div class="faq-answer">Each dealer gets a unique referral link. When a new dealer signs up and activates a paid plan using your link, you receive listing credits equivalent to one month of the plan they chose. Credits never expire.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        What is the revenue share model?
+        <i class="fa fa-plus faq-icon"></i>
+      </div>
+      <div class="faq-answer">Available on the Enterprise plan, revenue share means you pay a 5–10% commission on successfully facilitated sales, with no monthly subscription fee. This model is best suited for dealers with high-value, low-volume inventory. Contact us to discuss terms.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        How does the free API inventory feed work?
+        <i class="fa fa-plus faq-icon"></i>
+      </div>
+      <div class="faq-answer">On Elite and Enterprise plans, you can connect your existing inventory management system to LUL via our RESTful API or XML/CSV feed. Listings sync automatically so you never have to update manually. Full documentation and a dedicated onboarding call are provided.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        What payment methods do you accept?
+        <i class="fa fa-plus faq-icon"></i>
+      </div>
+      <div class="faq-answer">We accept all major credit/debit cards (Visa, Mastercard, Amex), SEPA bank transfer, and PayPal. Annual invoices are also available for Enterprise clients.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Do you offer discounts for non-profits or startups?
+        <i class="fa fa-plus faq-icon"></i>
+      </div>
+      <div class="faq-answer">Yes — we evaluate requests on a case-by-case basis. Please reach out via the contact form or email us directly at the address listed in the footer.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="header-logo" style="margin-bottom:16px">
+          <div class="logo-mark">L</div>
+          <div><span class="logo-text">LUL</span><span class="logo-tagline">Luxury Unique Listings</span></div>
+        </a>
+        <p>The world's most exclusive marketplace for luxury assets.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="listings.html?cat=homes">Homes</a></li>
+          <li><a href="listings.html?cat=cars">Cars</a></li>
+          <li><a href="listings.html?cat=yachts">Yachts</a></li>
+          <li><a href="listings.html?cat=jets">Private Jets</a></li>
+          <li><a href="listings.html?cat=villas">Villas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About LUL</a></li>
+          <li><a href="pricing.html">For Dealers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+      <!-- ═══ CONTATTI — modifica qui ═══ -->
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fa fa-phone"></i><a href="tel:+00000000000">[INSERISCI NUMERO]</a></div>
+        <div class="footer-contact-item"><i class="fa fa-envelope"></i><a href="mailto:info@example.com">[INSERISCI EMAIL]</a></div>
+        <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><a href="#">[INSERISCI WHATSAPP]</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copy">© 2025 LUL — Luxury Unique Listings. All rights reserved.</span>
+      <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Cookies</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/cookies.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

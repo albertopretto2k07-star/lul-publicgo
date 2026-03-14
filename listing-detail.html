@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="View full listing details — LUL Luxury Unique Listings." />
+  <title>Listing Detail — LUL Luxury Unique Listings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" role="alertdialog">
+  <div class="cookie-text"><strong>We use cookies</strong> — technical cookies are essential. With your consent we also collect anonymous analytics. <a href="#">Learn more</a></div>
+  <div class="cookie-actions">
+    <button class="btn-cookie-all">Accept All</button>
+    <button class="btn-cookie-tech">Essential Only</button>
+    <button class="btn-cookie-customize">Customize</button>
+  </div>
+</div>
+<div id="cookie-modal" role="dialog" aria-modal="true">
+  <div class="cookie-modal-box">
+    <h2>Cookie Preferences</h2>
+    <p>Choose which cookies to allow.</p>
+    <div class="cookie-toggle-row">
+      <div><div class="cookie-toggle-label">Essential Cookies</div><div class="cookie-toggle-desc">Always active.</div></div>
+      <label class="toggle"><input type="checkbox" checked disabled /><span class="toggle-slider"></span></label>
+    </div>
+    <div class="cookie-toggle-row">
+      <div><div class="cookie-toggle-label">Analytics Cookies</div><div class="cookie-toggle-desc">Anonymous usage data.</div></div>
+      <label class="toggle"><input id="toggle-analytics" type="checkbox" /><span class="toggle-slider"></span></label>
+    </div>
+    <div class="cookie-modal-btns">
+      <button class="btn-modal-cancel">Cancel</button>
+      <button class="btn-modal-save">Save Preferences</button>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu">
+  <button class="mobile-menu-close"><i class="fa fa-times"></i></button>
+  <a href="index.html" data-i18n="nav_homes">Homes</a>
+  <a href="listings.html?cat=cars" data-i18n="nav_cars">Cars</a>
+  <a href="listings.html?cat=yachts" data-i18n="nav_yachts">Yachts</a>
+  <a href="listings.html?cat=jets" data-i18n="nav_jets">Private Jets</a>
+  <a href="listings.html?cat=villas" data-i18n="nav_villas">Villas</a>
+  <a href="listings.html?cat=watches" data-i18n="nav_watches">Watches</a>
+  <a href="listings.html?cat=jewellery" data-i18n="nav_jewellery">Jewellery</a>
+  <a href="listings.html?cat=other" data-i18n="nav_other">Other</a>
+  <a href="pricing.html" style="color:var(--color-gold);margin-top:12px">List with Us</a>
+</nav>
+
+<!-- Header -->
+<header class="site-header">
+  <a href="index.html" class="header-logo">
+    <div class="logo-mark">L</div>
+    <div><span class="logo-text">LUL</span><span class="logo-tagline">Luxury Unique Listings</span></div>
+  </a>
+  <nav class="header-nav">
+    <a href="listings.html?cat=homes"     data-i18n="nav_homes">Homes</a>
+    <a href="listings.html?cat=cars"      data-i18n="nav_cars">Cars</a>
+    <a href="listings.html?cat=yachts"    data-i18n="nav_yachts">Yachts</a>
+    <a href="listings.html?cat=jets"      data-i18n="nav_jets">Private Jets</a>
+    <a href="listings.html?cat=villas"    data-i18n="nav_villas">Villas</a>
+    <a href="listings.html?cat=watches"   data-i18n="nav_watches">Watches</a>
+    <a href="listings.html?cat=jewellery" data-i18n="nav_jewellery">Jewellery</a>
+    <a href="listings.html?cat=other"     data-i18n="nav_other">Other</a>
+  </nav>
+  <div class="header-right">
+    <div class="lang-switcher">
+      <button class="lang-btn"><span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span><span class="lang-arrow">▼</span></button>
+      <div class="lang-dropdown"></div>
+    </div>
+    <a href="pricing.html" class="btn-publish" data-i18n="publish">List with Us</a>
+    <a href="#" class="btn-login" data-i18n="login">Sign In</a>
+    <button class="header-menu-toggle"><i class="fa fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- Breadcrumb -->
+<div style="background:var(--color-white);border-bottom:1px solid var(--color-border);padding:12px 0;">
+  <div class="container">
+    <nav class="breadcrumb" style="color:var(--color-muted)">
+      <a href="index.html" style="color:var(--color-muted)">Home</a>
+      <span class="sep">/</span>
+      <!-- MODIFICA: aggiorna il link alla categoria corretta -->
+      <a href="listings.html" style="color:var(--color-muted)">CATEGORIA</a>
+      <span class="sep">/</span>
+      <span class="current" style="color:var(--color-text)">INSERISCI TITOLO INSERZIONE</span>
+    </nav>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <span class="lightbox-close" title="Close">×</span>
+  <button class="lightbox-prev" aria-label="Previous image"><i class="fa fa-chevron-left"></i></button>
+  <img class="lightbox-img" src="" alt="Gallery image" />
+  <button class="lightbox-next" aria-label="Next image"><i class="fa fa-chevron-right"></i></button>
+</div>
+
+<!-- Main Content -->
+<main class="section" style="padding-top:32px">
+  <div class="container">
+    <div class="detail-layout">
+
+      <!-- ══ LEFT COLUMN: Gallery + Tabs ══ -->
+      <div class="detail-main">
+
+        <!-- Gallery -->
+        <div class="gallery-main">
+          <!-- MODIFICA: sostituisci con l'URL della tua immagine principale -->
+          <img id="gallery-main-img"
+               src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=85"
+               alt="INSERISCI DESCRIZIONE IMMAGINE PRINCIPALE" />
+          <button class="gallery-expand" aria-label="View fullscreen"><i class="fa fa-expand"></i></button>
+        </div>
+
+        <!-- Thumbnails (5 slot immagine) -->
+        <div class="gallery-thumbs">
+          <!-- ═ IMMAGINE 1 (principale) — modifica src ═ -->
+          <div class="gallery-thumb active">
+            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=300&q=70" alt="Image 1" />
+          </div>
+          <!-- ═ IMMAGINE 2 — modifica src ═ -->
+          <div class="gallery-thumb">
+            <img src="https://images.unsplash.com/photo-1600607687644-c7171b41c2e7?w=300&q=70" alt="Image 2" />
+          </div>
+          <!-- ═ IMMAGINE 3 — modifica src ═ -->
+          <div class="gallery-thumb">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=300&q=70" alt="Image 3" />
+          </div>
+          <!-- ═ IMMAGINE 4 — modifica src ═ -->
+          <div class="gallery-thumb">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=300&q=70" alt="Image 4" />
+          </div>
+          <!-- ═ IMMAGINE 5 — modifica src ═ -->
+          <div class="gallery-thumb">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=300&q=70" alt="Image 5" />
+          </div>
+        </div>
+
+        <!-- Detail Tabs -->
+        <div style="margin-top:36px">
+          <div class="detail-tabs">
+            <button class="detail-tab active" data-tab="tab-desc">Description</button>
+            <button class="detail-tab" data-tab="tab-specs">Specifications</button>
+            <button class="detail-tab" data-tab="tab-contact">Contact Seller</button>
+            <button class="detail-tab" data-tab="tab-location">Location</button>
+          </div>
+
+          <!-- Tab: Description -->
+          <div id="tab-desc" class="detail-tab-content active">
+            <div class="detail-description">
+              <!--
+                MODIFICA: inserisci la descrizione completa dell'inserzione.
+                Puoi usare paragrafi <p>, elenchi <ul><li>, ecc.
+              -->
+              <p>
+                INSERISCI QUI LA DESCRIZIONE COMPLETA DELL'INSERZIONE.
+                Descrivi le caratteristiche principali, la storia, i dettagli unici
+                e tutto ciò che rende questo oggetto esclusivo e desiderabile.
+              </p>
+              <p>
+                SECONDO PARAGRAFO — caratteristiche architettoniche / tecniche / storiche.
+                Puoi descrivere materiali, anno di costruzione / produzione, restauri effettuati, ecc.
+              </p>
+              <p>
+                TERZO PARAGRAFO — contesto, posizione, lifestyle. Cosa rende questa proprietà /
+                veicolo / oggetto unico nel suo genere?
+              </p>
+            </div>
+          </div>
+
+          <!-- Tab: Specifiche Tecniche -->
+          <div id="tab-specs" class="detail-tab-content">
+            <!--
+              MODIFICA: riempi la tabella con le specifiche tecniche reali.
+              Aggiungi o rimuovi righe <tr> secondo necessità.
+            -->
+            <table class="specs-table">
+              <tbody>
+                <!-- ═ SPECIFICHE GENERALI ═ -->
+                <tr><td>Reference / ID</td>            <td>INSERISCI RIFERIMENTO</td></tr>
+                <tr><td>Year</td>                      <td>INSERISCI ANNO</td></tr>
+                <tr><td>Condition</td>                 <td>INSERISCI CONDIZIONE (New / Pre-owned / Vintage)</td></tr>
+                <tr><td>Country</td>                   <td>INSERISCI PAESE</td></tr>
+                <tr><td>City / Region</td>             <td>INSERISCI CITTÀ / REGIONE</td></tr>
+
+                <!-- ═ SPECIFICHE CATEGORIA (esempi — adatta alla categoria) ═ -->
+                <tr><td>Category-Specific Spec 1</td> <td>INSERISCI VALORE</td></tr>
+                <tr><td>Category-Specific Spec 2</td> <td>INSERISCI VALORE</td></tr>
+                <tr><td>Category-Specific Spec 3</td> <td>INSERISCI VALORE</td></tr>
+                <tr><td>Category-Specific Spec 4</td> <td>INSERISCI VALORE</td></tr>
+                <tr><td>Category-Specific Spec 5</td> <td>INSERISCI VALORE</td></tr>
+                <tr><td>Category-Specific Spec 6</td> <td>INSERISCI VALORE</td></tr>
+
+                <!-- ═ IMMOBILI — usa queste righe se è una casa/villa ═ -->
+                <!-- <tr><td>Total Area</td>          <td>XXX m²</td></tr> -->
+                <!-- <tr><td>Bedrooms</td>             <td>X</td></tr> -->
+                <!-- <tr><td>Bathrooms</td>            <td>X</td></tr> -->
+                <!-- <tr><td>Garage</td>               <td>X cars</td></tr> -->
+                <!-- <tr><td>Pool</td>                 <td>Yes / No</td></tr> -->
+                <!-- <tr><td>Garden</td>               <td>X m²</td></tr> -->
+
+                <!-- ═ AUTO — usa queste righe se è un'automobile ═ -->
+                <!-- <tr><td>Make</td>                 <td>MARCA</td></tr> -->
+                <!-- <tr><td>Model</td>                <td>MODELLO</td></tr> -->
+                <!-- <tr><td>Engine</td>               <td>X.X L / V8 / W12…</td></tr> -->
+                <!-- <tr><td>Power</td>                <td>XXX hp / kW</td></tr> -->
+                <!-- <tr><td>0–100 km/h</td>           <td>X.X s</td></tr> -->
+                <!-- <tr><td>Mileage</td>              <td>XX,XXX km</td></tr> -->
+                <!-- <tr><td>Transmission</td>         <td>Automatic / Manual</td></tr> -->
+                <!-- <tr><td>Colour</td>               <td>COLORE</td></tr> -->
+
+                <!-- ═ YACHT — usa queste righe se è uno yacht ═ -->
+                <!-- <tr><td>Builder</td>              <td>CANTIERE NAVALE</td></tr> -->
+                <!-- <tr><td>LOA</td>                  <td>XX m</td></tr> -->
+                <!-- <tr><td>Beam</td>                 <td>X.X m</td></tr> -->
+                <!-- <tr><td>Guests (sleeping)</td>    <td>X</td></tr> -->
+                <!-- <tr><td>Crew</td>                 <td>X</td></tr> -->
+                <!-- <tr><td>Engines</td>              <td>XXX hp each</td></tr> -->
+                <!-- <tr><td>Max Speed</td>            <td>XX kn</td></tr> -->
+
+                <!-- ═ JET PRIVATO — usa queste righe ═ -->
+                <!-- <tr><td>Manufacturer</td>         <td>PRODUTTORE</td></tr> -->
+                <!-- <tr><td>Model</td>                <td>MODELLO</td></tr> -->
+                <!-- <tr><td>Passengers</td>           <td>X</td></tr> -->
+                <!-- <tr><td>Range</td>                <td>X,XXX km</td></tr> -->
+                <!-- <tr><td>Cruise Speed</td>         <td>XXX km/h</td></tr> -->
+                <!-- <tr><td>Total Time</td>           <td>X,XXX hrs</td></tr> -->
+
+                <!-- ═ OROLOGIO / GIOIELLO ═ -->
+                <!-- <tr><td>Brand</td>                <td>MARCA</td></tr> -->
+                <!-- <tr><td>Reference</td>            <td>REF. NUMERO</td></tr> -->
+                <!-- <tr><td>Material</td>             <td>MATERIALE</td></tr> -->
+                <!-- <tr><td>Movement</td>             <td>CALIBRO / AUTOMATICO</td></tr> -->
+                <!-- <tr><td>With Box & Papers</td>    <td>Yes / No</td></tr> -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Tab: Contact Form -->
+          <div id="tab-contact" class="detail-tab-content">
+            <p style="color:var(--color-muted);font-size:0.9rem;margin-bottom:24px">
+              Send a message to the seller. You'll receive a reply within 24 hours.
+            </p>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent! The dealer will contact you shortly.')">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cf-name">Full Name *</label>
+                  <input type="text" id="cf-name" placeholder="Your full name" required />
+                </div>
+                <div class="form-group">
+                  <label for="cf-email">Email Address *</label>
+                  <input type="email" id="cf-email" placeholder="your@email.com" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cf-phone">Phone Number</label>
+                  <input type="tel" id="cf-phone" placeholder="+1 234 567 890" />
+                </div>
+                <div class="form-group">
+                  <label for="cf-budget">Budget (approx.)</label>
+                  <select id="cf-budget">
+                    <option value="">Select range</option>
+                    <option>Under €500K</option>
+                    <option>€500K – €1M</option>
+                    <option>€1M – €5M</option>
+                    <option>€5M – €10M</option>
+                    <option>€10M+</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cf-message">Message *</label>
+                <textarea id="cf-message" placeholder="I am interested in this listing. Please provide more information…" required style="min-height:120px"></textarea>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+                <input type="checkbox" id="cf-privacy" required style="accent-color:var(--color-gold);width:15px;height:15px" />
+                <label for="cf-privacy" style="font-size:0.8rem;color:var(--color-muted)">
+                  I agree to the <a href="#" style="color:var(--color-gold)">Privacy Policy</a> and consent to being contacted.
+                </label>
+              </div>
+              <button type="submit" class="btn-contact-main" style="border:none;cursor:pointer">
+                <i class="fa fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Tab: Location -->
+          <div id="tab-location" class="detail-tab-content">
+            <!--
+              MODIFICA: sostituisci con un iframe Google Maps reale o un'immagine statica.
+              Oppure aggiungi le coordinate / indirizzo testuale.
+            -->
+            <div style="background:var(--color-border);border-radius:var(--radius-md);height:340px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
+              <div>
+                <i class="fa fa-map-marker-alt" style="font-size:2.5rem;color:var(--color-gold);margin-bottom:16px;display:block"></i>
+                <p style="font-family:var(--font-serif);font-size:1.1rem;margin-bottom:8px">INSERISCI INDIRIZZO / CITTÀ</p>
+                <p style="color:var(--color-muted);font-size:0.85rem">
+                  <!-- MODIFICA: sostituisci con iframe Google Maps -->
+                  Sostituisci questo blocco con un iframe Google Maps:<br>
+                  <code style="font-size:0.8rem;color:var(--color-gold)">&lt;iframe src="https://maps.google.com/maps?q=..."&gt;&lt;/iframe&gt;</code>
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /tabs -->
+      </div><!-- /detail-main -->
+
+      <!-- ══ RIGHT COLUMN: Info Card ══ -->
+      <div>
+        <div class="detail-info-card">
+          <!-- MODIFICA: aggiorna categoria, titolo, prezzo, luogo -->
+          <span class="detail-badge">INSERISCI CATEGORIA</span>
+          <h1 class="detail-title">INSERISCI TITOLO COMPLETO INSERZIONE</h1>
+          <p class="detail-location"><i class="fa fa-map-marker-alt" style="color:var(--color-gold)"></i> INSERISCI CITTÀ, PAESE</p>
+
+          <div class="detail-price">
+            <!-- MODIFICA: inserisci prezzo e valuta -->
+            € <span>INSERISCI PREZZO</span>
+            <small>INSERISCI NOTA (es. "VAT incl." / "P.O.A.")</small>
+          </div>
+
+          <!-- Mini spec grid (4 valori chiave) -->
+          <div class="detail-spec-mini">
+            <!-- MODIFICA: personalizza le 4 spec chiave per la tua categoria -->
+            <div class="spec-mini-item">
+              <div class="spec-label">SPEC LABEL 1</div>
+              <div class="spec-val">VALORE 1</div>
+            </div>
+            <div class="spec-mini-item">
+              <div class="spec-label">SPEC LABEL 2</div>
+              <div class="spec-val">VALORE 2</div>
+            </div>
+            <div class="spec-mini-item">
+              <div class="spec-label">SPEC LABEL 3</div>
+              <div class="spec-val">VALORE 3</div>
+            </div>
+            <div class="spec-mini-item">
+              <div class="spec-label">SPEC LABEL 4</div>
+              <div class="spec-val">VALORE 4</div>
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <button class="btn-contact-main" onclick="document.querySelector('[data-tab=\'tab-contact\']').click();document.getElementById('tab-contact').scrollIntoView({behavior:'smooth'})">
+            <i class="fa fa-envelope"></i> Contact Seller
+          </button>
+
+          <!-- MODIFICA: inserisci numero WhatsApp reale -->
+          <a href="https://wa.me/INSERISCI_NUMERO?text=I'm interested in: INSERISCI TITOLO" class="btn-whatsapp" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+
+          <!-- Dealer Info -->
+          <div class="dealer-info-row">
+            <!-- MODIFICA: logo dealer, nome, data iscrizione -->
+            <img class="dealer-avatar-lg" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff&size=88" alt="Dealer" />
+            <div>
+              <div class="dealer-name">INSERISCI NOME DEALER</div>
+              <div class="dealer-since">Member since INSERISCI ANNO · INSERISCI CITTÀ</div>
+              <div style="margin-top:4px">
+                <span style="color:var(--color-gold);font-size:0.75rem">★★★★★</span>
+                <span style="font-size:0.72rem;color:var(--color-muted);margin-left:4px">Verified Dealer</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Share -->
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--color-border);display:flex;align-items:center;gap:12px;">
+            <span style="font-size:0.78rem;color:var(--color-muted)">Share:</span>
+            <a href="#" title="Share on WhatsApp" style="color:var(--color-muted);font-size:1rem;transition:color 0.2s" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color=''"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" title="Share on X" style="color:var(--color-muted);font-size:1rem;transition:color 0.2s" onmouseover="this.style.color='#000'" onmouseout="this.style.color=''"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" title="Share on LinkedIn" style="color:var(--color-muted);font-size:1rem;transition:color 0.2s" onmouseover="this.style.color='#0077B5'" onmouseout="this.style.color=''"><i class="fab fa-linkedin-in"></i></a>
+            <button onclick="navigator.clipboard?.writeText(window.location.href);alert('Link copied!')" title="Copy link" style="color:var(--color-muted);font-size:1rem;background:none;border:none;cursor:pointer"><i class="fa fa-link"></i></button>
+          </div>
+        </div><!-- /detail-info-card -->
+      </div>
+
+    </div><!-- /detail-layout -->
+
+    <!-- ══ SIMILAR LISTINGS ══ -->
+    <div style="margin-top:64px">
+      <div class="section-header" style="text-align:left;margin-bottom:32px">
+        <p class="section-eyebrow">More Listings</p>
+        <h2 class="section-title">You May Also Like</h2>
+      </div>
+
+      <div class="listings-grid">
+
+        <!-- ═══ SIMILE 1 — modifica qui ═══ -->
+        <article class="listing-card" data-id="sim1">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1600607687644-c7171b41c2e7?w=500&q=80" alt="INSERISCI TITOLO" loading="lazy" />
+            <button class="card-fav"><i class="fa-regular fa-heart"></i></button>
+            <span class="card-location"><i class="fa fa-map-marker-alt"></i> LUOGO</span>
+          </div>
+          <div class="card-body">
+            <p class="card-category">CATEGORIA</p>
+            <h3 class="card-title">INSERISCI TITOLO INSERZIONE SIMILE 1</h3>
+            <p class="card-price">€ INSERISCI PREZZO</p>
+            <div class="card-specs">
+              <span class="spec-tag"><i class="fa fa-ruler-combined"></i> SPEC</span>
+              <span class="spec-tag"><i class="fa fa-bed"></i> SPEC</span>
+            </div>
+            <div class="card-footer">
+              <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="" /> DEALER</span>
+              <a href="listing-detail.html" class="btn-card-contact">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ SIMILE 2 — modifica qui ═══ -->
+        <article class="listing-card" data-id="sim2">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80" alt="INSERISCI TITOLO" loading="lazy" />
+            <button class="card-fav"><i class="fa-regular fa-heart"></i></button>
+            <span class="card-location"><i class="fa fa-map-marker-alt"></i> LUOGO</span>
+          </div>
+          <div class="card-body">
+            <p class="card-category">CATEGORIA</p>
+            <h3 class="card-title">INSERISCI TITOLO INSERZIONE SIMILE 2</h3>
+            <p class="card-price">€ INSERISCI PREZZO</p>
+            <div class="card-specs">
+              <span class="spec-tag"><i class="fa fa-ruler-combined"></i> SPEC</span>
+              <span class="spec-tag"><i class="fa fa-bed"></i> SPEC</span>
+            </div>
+            <div class="card-footer">
+              <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="" /> DEALER</span>
+              <a href="listing-detail.html" class="btn-card-contact">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ═══ SIMILE 3 — modifica qui ═══ -->
+        <article class="listing-card" data-id="sim3">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&q=80" alt="INSERISCI TITOLO" loading="lazy" />
+            <button class="card-fav"><i class="fa-regular fa-heart"></i></button>
+            <span class="card-location"><i class="fa fa-map-marker-alt"></i> LUOGO</span>
+          </div>
+          <div class="card-body">
+            <p class="card-category">CATEGORIA</p>
+            <h3 class="card-title">INSERISCI TITOLO INSERZIONE SIMILE 3</h3>
+            <p class="card-price">€ INSERISCI PREZZO</p>
+            <div class="card-specs">
+              <span class="spec-tag"><i class="fa fa-ruler-combined"></i> SPEC</span>
+              <span class="spec-tag"><i class="fa fa-bed"></i> SPEC</span>
+            </div>
+            <div class="card-footer">
+              <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="" /> DEALER</span>
+              <a href="listing-detail.html" class="btn-card-contact">Details</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="header-logo" style="margin-bottom:16px">
+          <div class="logo-mark">L</div>
+          <div><span class="logo-text">LUL</span><span class="logo-tagline">Luxury Unique Listings</span></div>
+        </a>
+        <p>The world's most exclusive marketplace for luxury assets.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="listings.html?cat=homes">Homes</a></li>
+          <li><a href="listings.html?cat=cars">Cars</a></li>
+          <li><a href="listings.html?cat=yachts">Yachts</a></li>
+          <li><a href="listings.html?cat=jets">Private Jets</a></li>
+          <li><a href="listings.html?cat=villas">Villas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About LUL</a></li>
+          <li><a href="pricing.html">For Dealers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+      <!-- ═══ CONTATTI — modifica qui ═══ -->
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fa fa-phone"></i><a href="tel:+00000000000">[INSERISCI NUMERO]</a></div>
+        <div class="footer-contact-item"><i class="fa fa-envelope"></i><a href="mailto:info@example.com">[INSERISCI EMAIL]</a></div>
+        <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><a href="#">[INSERISCI WHATSAPP]</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copy">© 2025 LUL — Luxury Unique Listings. All rights reserved.</span>
+      <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Cookies</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/cookies.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Analytics Dashboard — LUL Owner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    body { background: var(--color-bg); }
+    canvas { max-height: 280px; }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIMPLE PASSWORD GATE ══
+     NOTE: This is a client-side gate for convenience only.
+     Replace with server-side authentication before deploying to production.
+-->
+<div id="auth-gate" style="display:none;position:fixed;inset:0;background:var(--color-black);z-index:99999;display:flex;align-items:center;justify-content:center;">
+  <div style="background:var(--color-white);border-radius:var(--radius-lg);padding:48px;max-width:400px;width:90%;text-align:center;box-shadow:var(--shadow-lg);">
+    <div class="logo-mark" style="margin:0 auto 16px;background:var(--color-gold);width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-sm);font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--color-black)">L</div>
+    <h2 style="font-family:var(--font-serif);font-size:1.4rem;margin-bottom:6px">Owner Dashboard</h2>
+    <p style="color:var(--color-muted);font-size:0.875rem;margin-bottom:28px">Enter your access password to continue.</p>
+    <input type="password" id="gate-password" placeholder="Password"
+      style="width:100%;border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:12px 16px;font-size:0.9rem;outline:none;margin-bottom:12px;transition:border-color 0.2s"
+      onkeydown="if(event.key==='Enter')checkPassword()" />
+    <button onclick="checkPassword()"
+      style="width:100%;background:var(--color-gold);color:var(--color-black);border:none;border-radius:var(--radius-sm);padding:12px;font-weight:600;font-size:0.9rem;cursor:pointer">
+      Access Dashboard
+    </button>
+    <p id="gate-error" style="color:#C0392B;font-size:0.8rem;margin-top:10px;display:none">Incorrect password. Please try again.</p>
+    <p style="color:var(--color-muted);font-size:0.75rem;margin-top:20px">
+      <!-- MODIFICA: cambia la password in app.js o nel codice qui sotto -->
+      Default password: <code style="color:var(--color-gold)">lul2025</code>
+    </p>
+  </div>
+</div>
+
+<script>
+  // ── MODIFICA: cambia questa password ──────────────────────
+  const DASHBOARD_PASSWORD = 'lul2025';
+  // ─────────────────────────────────────────────────────────
+
+  const authGate = document.getElementById('auth-gate');
+  const authKey  = 'lul_dashboard_auth';
+
+  function checkPassword() {
+    const val = document.getElementById('gate-password').value;
+    if (val === DASHBOARD_PASSWORD) {
+      sessionStorage.setItem(authKey, '1');
+      authGate.style.display = 'none';
+    } else {
+      document.getElementById('gate-error').style.display = 'block';
+      document.getElementById('gate-password').style.borderColor = '#C0392B';
+    }
+  }
+
+  // Show gate if not authenticated
+  if (!sessionStorage.getItem(authKey)) {
+    authGate.style.display = 'flex';
+  } else {
+    authGate.style.display = 'none';
+  }
+</script>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu">
+  <button class="mobile-menu-close"><i class="fa fa-times"></i></button>
+  <a href="index.html">Home</a>
+  <a href="listings.html">Listings</a>
+  <a href="pricing.html">Dealer Plans</a>
+</nav>
+
+<!-- Header (minimal for admin) -->
+<header class="site-header">
+  <a href="index.html" class="header-logo">
+    <div class="logo-mark">L</div>
+    <div><span class="logo-text">LUL</span><span class="logo-tagline">Owner Dashboard</span></div>
+  </a>
+  <nav class="header-nav">
+    <a href="index.html"><i class="fa fa-home" style="margin-right:5px"></i> Site</a>
+    <a href="listings.html">Listings</a>
+    <a href="pricing.html">Plans</a>
+  </nav>
+  <div class="header-right">
+    <button id="btn-export" class="analytics-export-btn" title="Export analytics data as JSON">
+      <i class="fa fa-download"></i> Export JSON
+    </button>
+    <button id="btn-clear" class="analytics-export-btn" title="Clear all collected analytics data" style="color:#e85d5d;border-color:rgba(232,93,93,0.3)">
+      <i class="fa fa-trash"></i> Clear Data
+    </button>
+    <button class="header-menu-toggle"><i class="fa fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- ══ ANALYTICS HEADER ══ -->
+<div class="analytics-header">
+  <div class="container">
+    <div class="analytics-header-row">
+      <div>
+        <h1>Analytics Overview</h1>
+        <p id="last-updated">Loading data…</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-sm);padding:8px 16px;font-size:0.82rem;color:rgba(255,255,255,0.65)">
+          <i class="fa fa-info-circle" style="color:var(--color-gold);margin-right:6px"></i>
+          Data is stored in your browser's localStorage. Export to save permanently.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAIN DASHBOARD ══ -->
+<main class="section" style="padding-top:32px">
+  <div class="container">
+
+    <!-- KPI Cards -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Total Sessions</div>
+        <div class="kpi-value" id="kpi-sessions">—</div>
+        <div class="kpi-delta up"><i class="fa fa-arrow-up"></i> Updated live</div>
+        <div class="kpi-icon"><i class="fa fa-users"></i></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Pageviews</div>
+        <div class="kpi-value" id="kpi-pageviews">—</div>
+        <div class="kpi-delta up"><i class="fa fa-arrow-up"></i> Updated live</div>
+        <div class="kpi-icon"><i class="fa fa-eye"></i></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Avg. Session Duration</div>
+        <div class="kpi-value" id="kpi-duration">—</div>
+        <div class="kpi-delta" style="color:var(--color-muted)">Across all sessions</div>
+        <div class="kpi-icon"><i class="fa fa-clock"></i></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Cookie Consent Rate</div>
+        <div class="kpi-value" id="kpi-consent">—</div>
+        <div class="kpi-delta" style="color:var(--color-muted)">% accepted all cookies</div>
+        <div class="kpi-icon"><i class="fa fa-cookie-bite"></i></div>
+      </div>
+    </div>
+
+    <!-- Main Charts Row: Line + Consent Doughnut -->
+    <div class="charts-grid" style="margin-bottom:20px">
+      <div class="chart-card">
+        <h3><i class="fa fa-chart-line" style="color:var(--color-gold);margin-right:8px"></i>Pageviews — Last 30 Days</h3>
+        <canvas id="chart-pageviews"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3><i class="fa fa-cookie" style="color:var(--color-gold);margin-right:8px"></i>Cookie Consent</h3>
+        <canvas id="chart-consent"></canvas>
+      </div>
+    </div>
+
+    <!-- Secondary Charts Row: Devices + Pages + Browsers -->
+    <div class="charts-row">
+      <div class="chart-card">
+        <h3><i class="fa fa-mobile-alt" style="color:var(--color-gold);margin-right:8px"></i>Devices</h3>
+        <canvas id="chart-devices"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3><i class="fa fa-file-alt" style="color:var(--color-gold);margin-right:8px"></i>Top Pages</h3>
+        <canvas id="chart-pages"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3><i class="fa fa-globe" style="color:var(--color-gold);margin-right:8px"></i>Browsers</h3>
+        <canvas id="chart-browsers"></canvas>
+      </div>
+    </div>
+
+    <!-- Countries Chart -->
+    <div style="margin-top:20px">
+      <div class="chart-card">
+        <h3><i class="fa fa-map" style="color:var(--color-gold);margin-right:8px"></i>Top Countries</h3>
+        <canvas id="chart-countries" style="max-height:220px"></canvas>
+      </div>
+    </div>
+
+    <!-- Raw Data Preview -->
+    <div style="margin-top:32px">
+      <div class="chart-card">
+        <h3 style="margin-bottom:16px"><i class="fa fa-table" style="color:var(--color-gold);margin-right:8px"></i>Recent Events (last 20)</h3>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:0.8rem" id="events-table">
+            <thead>
+              <tr style="background:var(--color-bg)">
+                <th style="padding:10px 12px;text-align:left;font-weight:600;color:var(--color-muted);letter-spacing:0.5px;font-size:0.72rem;text-transform:uppercase">Timestamp</th>
+                <th style="padding:10px 12px;text-align:left;font-weight:600;color:var(--color-muted);letter-spacing:0.5px;font-size:0.72rem;text-transform:uppercase">Type</th>
+                <th style="padding:10px 12px;text-align:left;font-weight:600;color:var(--color-muted);letter-spacing:0.5px;font-size:0.72rem;text-transform:uppercase">Page</th>
+                <th style="padding:10px 12px;text-align:left;font-weight:600;color:var(--color-muted);letter-spacing:0.5px;font-size:0.72rem;text-transform:uppercase">Device</th>
+                <th style="padding:10px 12px;text-align:left;font-weight:600;color:var(--color-muted);letter-spacing:0.5px;font-size:0.72rem;text-transform:uppercase">Browser</th>
+                <th style="padding:10px 12px;text-align:left;font-weight:600;color:var(--color-muted);letter-spacing:0.5px;font-size:0.72rem;text-transform:uppercase">Consent</th>
+                <th style="padding:10px 12px;text-align:left;font-weight:600;color:var(--color-muted);letter-spacing:0.5px;font-size:0.72rem;text-transform:uppercase">Session</th>
+              </tr>
+            </thead>
+            <tbody id="events-tbody"></tbody>
+          </table>
+        </div>
+        <p style="font-size:0.78rem;color:var(--color-muted);margin-top:12px">
+          Showing last 20 events. <button id="btn-export" onclick="document.getElementById('btn-export').click()" style="color:var(--color-gold);background:none;border:none;cursor:pointer;font-size:0.78rem;text-decoration:underline">Export all as JSON</button>
+        </p>
+      </div>
+    </div>
+
+    <!-- How to Use -->
+    <div style="margin-top:32px;background:var(--color-white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--color-border)">
+      <h3 style="font-family:var(--font-serif);font-size:1.1rem;margin-bottom:16px;display:flex;align-items:center;gap:10px">
+        <i class="fa fa-question-circle" style="color:var(--color-gold)"></i> How does this work?
+      </h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;font-size:0.875rem;color:var(--color-muted);line-height:1.7">
+        <div>
+          <strong style="color:var(--color-text);display:block;margin-bottom:4px"><i class="fa fa-database" style="color:var(--color-gold);margin-right:6px"></i>Data Storage</strong>
+          Analytics events are stored in this browser's <code>localStorage</code> under the key <code>lul_analytics</code>. This is a client-side demo. For production, connect <code>js/cookies.js</code> to a backend API endpoint (see comments in the file).
+        </div>
+        <div>
+          <strong style="color:var(--color-text);display:block;margin-bottom:4px"><i class="fa fa-chart-bar" style="color:var(--color-gold);margin-right:6px"></i>Demo Data</strong>
+          If no real events exist yet, the dashboard automatically seeds 180 demo events spread over the last 30 days, so you can preview all charts immediately.
+        </div>
+        <div>
+          <strong style="color:var(--color-text);display:block;margin-bottom:4px"><i class="fa fa-lock" style="color:var(--color-gold);margin-right:6px"></i>Access Control</strong>
+          This page is protected by a client-side password gate (default: <code>lul2025</code>). Change the password in <code>analytics.html</code> line ~40. For production, implement server-side authentication.
+        </div>
+        <div>
+          <strong style="color:var(--color-text);display:block;margin-bottom:4px"><i class="fa fa-cloud-upload-alt" style="color:var(--color-gold);margin-right:6px"></i>Production Setup</strong>
+          To collect real visitor data, modify <code>js/cookies.js</code> → <code>trackEvent()</code> to POST to your server endpoint instead of using localStorage. All the data structure is already defined.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer minimal -->
+<footer style="background:var(--color-black);padding:24px 0;margin-top:64px;border-top:1px solid rgba(255,255,255,0.08)">
+  <div class="container">
+    <div class="footer-bottom">
+      <span style="color:rgba(255,255,255,0.4);font-size:0.78rem">LUL Owner Dashboard — Not indexed by search engines</span>
+      <a href="index.html" style="color:rgba(255,255,255,0.4);font-size:0.78rem;transition:color 0.2s" onmouseover="this.style.color='var(--color-gold)'" onmouseout="this.style.color=''">
+        <i class="fa fa-arrow-left" style="margin-right:6px"></i>Back to site
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- Build events table -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Wait for analytics.js to run first
+    setTimeout(() => {
+      const raw = window.LulCookies?.getStoredAnalytics?.() || [];
+      const recent = raw.slice(-20).reverse();
+      const tbody = document.getElementById('events-tbody');
+      if (!tbody) return;
+
+      if (recent.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:24px;color:var(--color-muted)">No events yet — visit some pages first.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = recent.map(e => {
+        const ts   = e.timestamp ? new Date(e.timestamp).toLocaleString() : '—';
+        const type = e.type || '—';
+        const page = (e.page || '/').replace('.html', '');
+        const dev  = e.device || '—';
+        const br   = e.browser || '—';
+        const con  = e.consent || '—';
+        const sid  = (e.sessionId || '—').substring(0, 8) + '…';
+        const typeColor = type === 'pageview' ? '#2D7D4B' : type === 'click' ? '#C9A84C' : '#888';
+        return `<tr style="border-bottom:1px solid var(--color-border)">
+          <td style="padding:10px 12px">${ts}</td>
+          <td style="padding:10px 12px"><span style="color:${typeColor};font-weight:500">${type}</span></td>
+          <td style="padding:10px 12px">${page}</td>
+          <td style="padding:10px 12px">${dev}</td>
+          <td style="padding:10px 12px">${br}</td>
+          <td style="padding:10px 12px">${con}</td>
+          <td style="padding:10px 12px;font-family:monospace;font-size:0.75rem;color:var(--color-muted)">${sid}</td>
+        </tr>`;
+      }).join('');
+    }, 300);
+  });
+</script>
+
+<script src="js/cookies.js"></script>
+<script src="js/analytics.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

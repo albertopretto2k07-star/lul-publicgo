@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LUL — Luxury Unique Listings. Discover the world's finest homes, cars, yachts, private jets and collectibles." />
+  <title>LUL — Luxury Unique Listings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     COOKIE BANNER
+══════════════════════════════════════════════════════ -->
+<div id="cookie-banner" role="alertdialog" aria-label="Cookie consent">
+  <div class="cookie-text">
+    <strong>We use cookies</strong> — technical cookies are essential for the site to function properly. With your consent we also collect anonymous analytics to improve your experience.
+    <a href="#" style="margin-left:6px">Learn more</a>
+  </div>
+  <div class="cookie-actions">
+    <button class="btn-cookie-all">Accept All</button>
+    <button class="btn-cookie-tech">Essential Only</button>
+    <button class="btn-cookie-customize">Customize</button>
+  </div>
+</div>
+
+<!-- Cookie Preferences Modal -->
+<div id="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+  <div class="cookie-modal-box">
+    <h2 id="cookie-modal-title">Cookie Preferences</h2>
+    <p>Choose which cookies you'd like to allow. Essential cookies cannot be disabled as they are required for the site to work.</p>
+    <div class="cookie-toggle-row">
+      <div>
+        <div class="cookie-toggle-label">Essential Cookies</div>
+        <div class="cookie-toggle-desc">Session management, security, language preferences. Always active.</div>
+      </div>
+      <label class="toggle"><input type="checkbox" checked disabled /><span class="toggle-slider"></span></label>
+    </div>
+    <div class="cookie-toggle-row">
+      <div>
+        <div class="cookie-toggle-label">Analytics Cookies</div>
+        <div class="cookie-toggle-desc">Anonymous data about pages visited, device type and session duration. Helps us improve the platform.</div>
+      </div>
+      <label class="toggle"><input id="toggle-analytics" type="checkbox" /><span class="toggle-slider"></span></label>
+    </div>
+    <div class="cookie-modal-btns">
+      <button class="btn-modal-cancel">Cancel</button>
+      <button class="btn-modal-save">Save Preferences</button>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<nav class="mobile-menu" aria-label="Mobile navigation">
+  <button class="mobile-menu-close" aria-label="Close menu"><i class="fa fa-times"></i></button>
+  <a href="index.html" data-i18n="nav_homes" class="active">Homes</a>
+  <a href="listings.html?cat=cars" data-i18n="nav_cars">Cars</a>
+  <a href="listings.html?cat=yachts" data-i18n="nav_yachts">Yachts</a>
+  <a href="listings.html?cat=jets" data-i18n="nav_jets">Private Jets</a>
+  <a href="listings.html?cat=villas" data-i18n="nav_villas">Villas</a>
+  <a href="listings.html?cat=watches" data-i18n="nav_watches">Watches</a>
+  <a href="listings.html?cat=jewellery" data-i18n="nav_jewellery">Jewellery</a>
+  <a href="listings.html?cat=other" data-i18n="nav_other">Other</a>
+  <a href="pricing.html" style="color:var(--color-gold);margin-top:12px">List with Us</a>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════════ -->
+<header class="site-header">
+  <a href="index.html" class="header-logo" aria-label="LUL Home">
+    <div class="logo-mark">L</div>
+    <div>
+      <span class="logo-text">LUL</span>
+      <span class="logo-tagline">Luxury Unique Listings</span>
+    </div>
+  </a>
+
+  <nav class="header-nav" aria-label="Main navigation">
+    <a href="listings.html?cat=homes"     data-i18n="nav_homes">Homes</a>
+    <a href="listings.html?cat=cars"      data-i18n="nav_cars">Cars</a>
+    <a href="listings.html?cat=yachts"    data-i18n="nav_yachts">Yachts</a>
+    <a href="listings.html?cat=jets"      data-i18n="nav_jets">Private Jets</a>
+    <a href="listings.html?cat=villas"    data-i18n="nav_villas">Villas</a>
+    <a href="listings.html?cat=watches"   data-i18n="nav_watches">Watches</a>
+    <a href="listings.html?cat=jewellery" data-i18n="nav_jewellery">Jewellery</a>
+    <a href="listings.html?cat=other"     data-i18n="nav_other">Other</a>
+  </nav>
+
+  <div class="header-right">
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+        <span class="lang-flag">🇬🇧</span>
+        <span class="lang-code">EN</span>
+        <span class="lang-arrow">▼</span>
+      </button>
+      <div class="lang-dropdown" role="listbox"></div>
+    </div>
+
+    <a href="pricing.html" class="btn-publish" data-i18n="publish">List with Us</a>
+    <a href="#" class="btn-login" data-i18n="login">Sign In</a>
+    <button class="header-menu-toggle" aria-label="Open menu"><i class="fa fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg" role="img" aria-label="Luxury villa with pool at sunset"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-i18n="hero_eyebrow">The World's Finest Listings</p>
+    <h1>
+      <span data-i18n="hero_h1_1">Discover the Art of</span><br>
+      <em data-i18n="hero_h1_em">Exceptional Living</em>
+    </h1>
+    <p class="hero-sub" data-i18n="hero_sub">
+      Curated luxury real estate, vehicles, yachts, jets and collectibles from elite dealers worldwide.
+    </p>
+
+    <!-- Search Bar -->
+    <div class="hero-search" role="search">
+      <div class="hero-tabs">
+        <button class="hero-tab active" data-i18n="nav_homes">Homes</button>
+        <button class="hero-tab" data-i18n="nav_cars">Cars</button>
+        <button class="hero-tab" data-i18n="nav_yachts">Yachts</button>
+        <button class="hero-tab" data-i18n="nav_jets">Jets</button>
+        <button class="hero-tab" data-i18n="nav_villas">Villas</button>
+        <button class="hero-tab" data-i18n="nav_other">Other</button>
+      </div>
+      <div class="hero-search-row">
+        <input type="text" data-i18n-ph="search_ph" placeholder="Search by make, model, location…" aria-label="Search" />
+        <select aria-label="Price range">
+          <option value="">Any Price</option>
+          <option value="0-500000">Under €500K</option>
+          <option value="500000-1000000">€500K – €1M</option>
+          <option value="1000000-5000000">€1M – €5M</option>
+          <option value="5000000-">€5M+</option>
+        </select>
+        <button class="btn-search" onclick="window.location.href='listings.html'">
+          <i class="fa fa-search"></i>
+          <span data-i18n="btn_search">Search</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="num">12,000+</span>
+        <span class="label">Active Listings</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">140+</span>
+        <span class="label">Countries</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">3,500+</span>
+        <span class="label">Elite Dealers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FEATURED LISTINGS
+══════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow" data-i18n="featured_label">Featured Listings</p>
+      <h2 class="section-title" data-i18n="featured_title">Handpicked for Discerning Buyers</h2>
+    </div>
+
+    <div class="listings-grid">
+
+      <!-- ═══ INSERZIONE 1 — modifica qui ═══ -->
+      <article class="listing-card" data-id="1">
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80" alt="INSERISCI TITOLO INSERZIONE 1" loading="lazy" />
+          <span class="card-badge featured">Featured</span>
+          <button class="card-fav" aria-label="Save to favourites"><i class="fa-regular fa-heart"></i></button>
+          <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+          <span class="card-img-count"><i class="fa fa-images"></i> 12</span>
+        </div>
+        <div class="card-body">
+          <p class="card-category">INSERISCI CATEGORIA</p>
+          <h3 class="card-title">INSERISCI TITOLO INSERZIONE 1</h3>
+          <p class="card-price">€ <span>INSERISCI PREZZO</span></p>
+          <div class="card-specs">
+            <span class="spec-tag"><i class="fa fa-ruler-combined"></i> SPEC 1</span>
+            <span class="spec-tag"><i class="fa fa-bed"></i> SPEC 2</span>
+            <span class="spec-tag"><i class="fa fa-bath"></i> SPEC 3</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="Dealer" /> DEALER NAME</span>
+            <a href="listing-detail.html" class="btn-card-contact">View Details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ═══ INSERZIONE 2 — modifica qui ═══ -->
+      <article class="listing-card" data-id="2">
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=80" alt="INSERISCI TITOLO INSERZIONE 2" loading="lazy" />
+          <span class="card-badge new">New</span>
+          <button class="card-fav" aria-label="Save to favourites"><i class="fa-regular fa-heart"></i></button>
+          <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+          <span class="card-img-count"><i class="fa fa-images"></i> 8</span>
+        </div>
+        <div class="card-body">
+          <p class="card-category">INSERISCI CATEGORIA</p>
+          <h3 class="card-title">INSERISCI TITOLO INSERZIONE 2</h3>
+          <p class="card-price">€ <span>INSERISCI PREZZO</span></p>
+          <div class="card-specs">
+            <span class="spec-tag"><i class="fa fa-tachometer-alt"></i> SPEC 1</span>
+            <span class="spec-tag"><i class="fa fa-car"></i> SPEC 2</span>
+            <span class="spec-tag"><i class="fa fa-gas-pump"></i> SPEC 3</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="Dealer" /> DEALER NAME</span>
+            <a href="listing-detail.html" class="btn-card-contact">View Details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ═══ INSERZIONE 3 — modifica qui ═══ -->
+      <article class="listing-card" data-id="3">
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=600&q=80" alt="INSERISCI TITOLO INSERZIONE 3" loading="lazy" />
+          <button class="card-fav" aria-label="Save to favourites"><i class="fa-regular fa-heart"></i></button>
+          <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+          <span class="card-img-count"><i class="fa fa-images"></i> 15</span>
+        </div>
+        <div class="card-body">
+          <p class="card-category">INSERISCI CATEGORIA</p>
+          <h3 class="card-title">INSERISCI TITOLO INSERZIONE 3</h3>
+          <p class="card-price">€ <span>INSERISCI PREZZO</span></p>
+          <div class="card-specs">
+            <span class="spec-tag"><i class="fa fa-water"></i> SPEC 1</span>
+            <span class="spec-tag"><i class="fa fa-ship"></i> SPEC 2</span>
+            <span class="spec-tag"><i class="fa fa-anchor"></i> SPEC 3</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="Dealer" /> DEALER NAME</span>
+            <a href="listing-detail.html" class="btn-card-contact">View Details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ═══ INSERZIONE 4 — modifica qui ═══ -->
+      <article class="listing-card" data-id="4">
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="INSERISCI TITOLO INSERZIONE 4" loading="lazy" />
+          <span class="card-badge featured">Featured</span>
+          <button class="card-fav" aria-label="Save to favourites"><i class="fa-regular fa-heart"></i></button>
+          <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+          <span class="card-img-count"><i class="fa fa-images"></i> 10</span>
+        </div>
+        <div class="card-body">
+          <p class="card-category">INSERISCI CATEGORIA</p>
+          <h3 class="card-title">INSERISCI TITOLO INSERZIONE 4</h3>
+          <p class="card-price">€ <span>INSERISCI PREZZO</span></p>
+          <div class="card-specs">
+            <span class="spec-tag"><i class="fa fa-plane"></i> SPEC 1</span>
+            <span class="spec-tag"><i class="fa fa-users"></i> SPEC 2</span>
+            <span class="spec-tag"><i class="fa fa-route"></i> SPEC 3</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="Dealer" /> DEALER NAME</span>
+            <a href="listing-detail.html" class="btn-card-contact">View Details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ═══ INSERZIONE 5 — modifica qui ═══ -->
+      <article class="listing-card" data-id="5">
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="INSERISCI TITOLO INSERZIONE 5" loading="lazy" />
+          <button class="card-fav" aria-label="Save to favourites"><i class="fa-regular fa-heart"></i></button>
+          <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+          <span class="card-img-count"><i class="fa fa-images"></i> 7</span>
+        </div>
+        <div class="card-body">
+          <p class="card-category">INSERISCI CATEGORIA</p>
+          <h3 class="card-title">INSERISCI TITOLO INSERZIONE 5</h3>
+          <p class="card-price">€ <span>INSERISCI PREZZO</span></p>
+          <div class="card-specs">
+            <span class="spec-tag"><i class="fa fa-clock"></i> SPEC 1</span>
+            <span class="spec-tag"><i class="fa fa-certificate"></i> SPEC 2</span>
+            <span class="spec-tag"><i class="fa fa-gem"></i> SPEC 3</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="Dealer" /> DEALER NAME</span>
+            <a href="listing-detail.html" class="btn-card-contact">View Details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ═══ INSERZIONE 6 — modifica qui ═══ -->
+      <article class="listing-card" data-id="6">
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="INSERISCI TITOLO INSERZIONE 6" loading="lazy" />
+          <span class="card-badge new">New</span>
+          <button class="card-fav" aria-label="Save to favourites"><i class="fa-regular fa-heart"></i></button>
+          <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+          <span class="card-img-count"><i class="fa fa-images"></i> 20</span>
+        </div>
+        <div class="card-body">
+          <p class="card-category">INSERISCI CATEGORIA</p>
+          <h3 class="card-title">INSERISCI TITOLO INSERZIONE 6</h3>
+          <p class="card-price">€ <span>INSERISCI PREZZO</span></p>
+          <div class="card-specs">
+            <span class="spec-tag"><i class="fa fa-tree"></i> SPEC 1</span>
+            <span class="spec-tag"><i class="fa fa-swimming-pool"></i> SPEC 2</span>
+            <span class="spec-tag"><i class="fa fa-ruler-combined"></i> SPEC 3</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="Dealer" /> DEALER NAME</span>
+            <a href="listing-detail.html" class="btn-card-contact">View Details</a>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /listings-grid -->
+
+    <div class="section-cta-wrap">
+      <a href="listings.html" class="btn-outline" data-i18n="view_all">View All Listings <i class="fa fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     BROWSE BY CATEGORY
+══════════════════════════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow" data-i18n="categories_label">Browse by Category</p>
+      <h2 class="section-title" data-i18n="categories_title">Every Luxury, One Destination</h2>
+    </div>
+
+    <div class="categories-grid">
+      <a href="listings.html?cat=homes" class="category-card wide">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Homes & Estates" loading="lazy" />
+        <div class="category-card-overlay">
+          <div class="category-icon"><i class="fa fa-home"></i></div>
+          <div class="category-name" data-i18n="cat_homes">Homes & Estates</div>
+          <div class="category-count">4,200+ listings</div>
+        </div>
+      </a>
+
+      <a href="listings.html?cat=cars" class="category-card">
+        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80" alt="Luxury Cars" loading="lazy" />
+        <div class="category-card-overlay">
+          <div class="category-icon"><i class="fa fa-car"></i></div>
+          <div class="category-name" data-i18n="cat_cars">Luxury Cars</div>
+          <div class="category-count">2,800+ listings</div>
+        </div>
+      </a>
+
+      <a href="listings.html?cat=yachts" class="category-card">
+        <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=600&q=80" alt="Yachts" loading="lazy" />
+        <div class="category-card-overlay">
+          <div class="category-icon"><i class="fa fa-ship"></i></div>
+          <div class="category-name" data-i18n="cat_yachts">Yachts</div>
+          <div class="category-count">1,100+ listings</div>
+        </div>
+      </a>
+
+      <a href="listings.html?cat=jets" class="category-card">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="Private Jets" loading="lazy" />
+        <div class="category-card-overlay">
+          <div class="category-icon"><i class="fa fa-plane"></i></div>
+          <div class="category-name" data-i18n="cat_jets">Private Jets</div>
+          <div class="category-count">320+ listings</div>
+        </div>
+      </a>
+
+      <a href="listings.html?cat=villas" class="category-card">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Villas" loading="lazy" />
+        <div class="category-card-overlay">
+          <div class="category-icon"><i class="fa fa-umbrella-beach"></i></div>
+          <div class="category-name" data-i18n="cat_villas">Villas</div>
+          <div class="category-count">1,900+ listings</div>
+        </div>
+      </a>
+
+      <a href="listings.html?cat=watches" class="category-card">
+        <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=600&q=80" alt="Watches" loading="lazy" />
+        <div class="category-card-overlay">
+          <div class="category-icon"><i class="fa fa-clock"></i></div>
+          <div class="category-name" data-i18n="cat_watches">Watches</div>
+          <div class="category-count">650+ listings</div>
+        </div>
+      </a>
+
+      <a href="listings.html?cat=jewellery" class="category-card">
+        <img src="https://images.unsplash.com/photo-1611955167811-4711904bb9f8?w=600&q=80" alt="Jewellery" loading="lazy" />
+        <div class="category-card-overlay">
+          <div class="category-icon"><i class="fa fa-gem"></i></div>
+          <div class="category-name" data-i18n="cat_jewellery">Jewellery</div>
+          <div class="category-count">480+ listings</div>
+        </div>
+      </a>
+
+      <a href="listings.html?cat=other" class="category-card">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Collectibles" loading="lazy" />
+        <div class="category-card-overlay">
+          <div class="category-icon"><i class="fa fa-star"></i></div>
+          <div class="category-name" data-i18n="cat_other">Collectibles</div>
+          <div class="category-count">780+ listings</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow" data-i18n="how_label">How It Works</p>
+      <h2 class="section-title" data-i18n="how_title">Simple. Elegant. Effortless.</h2>
+      <p class="section-desc">Whether you're buying or selling, our platform connects the world's finest objects with those who appreciate them.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Browse &amp; Discover</h3>
+        <p>Explore thousands of curated listings across every luxury category, filtered by location, price, and specifications.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Connect Directly</h3>
+        <p>Contact verified dealers and private sellers directly. No middlemen, no hidden fees — pure luxury at your fingertips.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Own with Confidence</h3>
+        <p>Every listing is verified. Benefit from our concierge support, legal guidance, and post-sale assistance worldwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     STATS
+══════════════════════════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-item">
+        <span class="num">€ 2.4B+</span>
+        <span class="label">Estimated Value Listed</span>
+      </div>
+      <div class="stat-item">
+        <span class="num">140+</span>
+        <span class="label">Countries Represented</span>
+      </div>
+      <div class="stat-item">
+        <span class="num">3,500+</span>
+        <span class="label">Verified Dealers</span>
+      </div>
+      <div class="stat-item">
+        <span class="num">98%</span>
+        <span class="label">Dealer Satisfaction Rate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     DEALER CTA BANNER
+══════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="dealer-banner">
+      <div class="dealer-banner-text">
+        <h2>Are you a <span>luxury dealer</span>?<br>Start listing today — free.</h2>
+        <p>Join thousands of elite dealers worldwide. Start with a free trial, grow your reach, and connect with high-net-worth buyers across 140+ countries. No commitment. No credit card.</p>
+      </div>
+      <div class="dealer-banner-actions">
+        <a href="pricing.html" class="btn-primary"><i class="fa fa-rocket"></i> Start Free Trial</a>
+        <a href="pricing.html" class="btn-secondary">View Plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="index.html" class="header-logo" style="margin-bottom:16px">
+          <div class="logo-mark">L</div>
+          <div>
+            <span class="logo-text">LUL</span>
+            <span class="logo-tagline">Luxury Unique Listings</span>
+          </div>
+        </a>
+        <p>The world's most exclusive marketplace for luxury real estate, vehicles, yachts, private jets, and fine collectibles.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- Explore -->
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="listings.html?cat=homes">Homes &amp; Estates</a></li>
+          <li><a href="listings.html?cat=cars">Luxury Cars</a></li>
+          <li><a href="listings.html?cat=yachts">Yachts</a></li>
+          <li><a href="listings.html?cat=jets">Private Jets</a></li>
+          <li><a href="listings.html?cat=villas">Villas</a></li>
+          <li><a href="listings.html?cat=watches">Watches</a></li>
+          <li><a href="listings.html?cat=jewellery">Jewellery</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About LUL</a></li>
+          <li><a href="pricing.html">For Dealers</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <!-- ═══ CONTATTI — modifica qui ═══ -->
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-item">
+          <i class="fa fa-phone"></i>
+          <!-- MODIFICA: inserisci il tuo numero di telefono -->
+          <a href="tel:+00000000000">[INSERISCI NUMERO DI TELEFONO]</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa fa-envelope"></i>
+          <!-- MODIFICA: inserisci la tua email di lavoro -->
+          <a href="mailto:info@example.com">[INSERISCI EMAIL DI LAVORO]</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fab fa-whatsapp"></i>
+          <!-- MODIFICA: inserisci il numero WhatsApp -->
+          <a href="https://wa.me/00000000000">[INSERISCI NUMERO WHATSAPP]</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fab fa-instagram"></i>
+          <!-- MODIFICA: inserisci l'handle Instagram -->
+          <a href="#">[INSERISCI HANDLE INSTAGRAM]</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa fa-map-marker-alt"></i>
+          <!-- MODIFICA: inserisci l'indirizzo -->
+          <address style="font-style:normal">[INSERISCI INDIRIZZO UFFICIO]</address>
+        </div>
+      </div>
+
+    </div><!-- /footer-grid -->
+
+    <div class="footer-bottom">
+      <span data-i18n="footer_copy">© 2025 LUL — Luxury Unique Listings. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Cookies</a>
+        <a href="#">Terms</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/cookies.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

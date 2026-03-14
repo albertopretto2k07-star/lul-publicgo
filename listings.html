@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse luxury listings — homes, cars, yachts, jets and more on LUL." />
+  <title>Listings — LUL Luxury Unique Listings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" role="alertdialog">
+  <div class="cookie-text"><strong>We use cookies</strong> — technical cookies are essential. With your consent we also collect anonymous analytics. <a href="#">Learn more</a></div>
+  <div class="cookie-actions">
+    <button class="btn-cookie-all">Accept All</button>
+    <button class="btn-cookie-tech">Essential Only</button>
+    <button class="btn-cookie-customize">Customize</button>
+  </div>
+</div>
+<div id="cookie-modal" role="dialog" aria-modal="true">
+  <div class="cookie-modal-box">
+    <h2>Cookie Preferences</h2>
+    <p>Choose which cookies to allow.</p>
+    <div class="cookie-toggle-row">
+      <div><div class="cookie-toggle-label">Essential Cookies</div><div class="cookie-toggle-desc">Always active.</div></div>
+      <label class="toggle"><input type="checkbox" checked disabled /><span class="toggle-slider"></span></label>
+    </div>
+    <div class="cookie-toggle-row">
+      <div><div class="cookie-toggle-label">Analytics Cookies</div><div class="cookie-toggle-desc">Anonymous usage data.</div></div>
+      <label class="toggle"><input id="toggle-analytics" type="checkbox" /><span class="toggle-slider"></span></label>
+    </div>
+    <div class="cookie-modal-btns">
+      <button class="btn-modal-cancel">Cancel</button>
+      <button class="btn-modal-save">Save Preferences</button>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu">
+  <button class="mobile-menu-close"><i class="fa fa-times"></i></button>
+  <a href="index.html" data-i18n="nav_homes">Homes</a>
+  <a href="listings.html?cat=cars" data-i18n="nav_cars">Cars</a>
+  <a href="listings.html?cat=yachts" data-i18n="nav_yachts">Yachts</a>
+  <a href="listings.html?cat=jets" data-i18n="nav_jets">Private Jets</a>
+  <a href="listings.html?cat=villas" data-i18n="nav_villas">Villas</a>
+  <a href="listings.html?cat=watches" data-i18n="nav_watches">Watches</a>
+  <a href="listings.html?cat=jewellery" data-i18n="nav_jewellery">Jewellery</a>
+  <a href="listings.html?cat=other" data-i18n="nav_other">Other</a>
+  <a href="pricing.html" style="color:var(--color-gold);margin-top:12px">List with Us</a>
+</nav>
+
+<!-- Header -->
+<header class="site-header">
+  <a href="index.html" class="header-logo">
+    <div class="logo-mark">L</div>
+    <div><span class="logo-text">LUL</span><span class="logo-tagline">Luxury Unique Listings</span></div>
+  </a>
+  <nav class="header-nav">
+    <a href="listings.html?cat=homes"     data-i18n="nav_homes">Homes</a>
+    <a href="listings.html?cat=cars"      data-i18n="nav_cars">Cars</a>
+    <a href="listings.html?cat=yachts"    data-i18n="nav_yachts">Yachts</a>
+    <a href="listings.html?cat=jets"      data-i18n="nav_jets">Private Jets</a>
+    <a href="listings.html?cat=villas"    data-i18n="nav_villas">Villas</a>
+    <a href="listings.html?cat=watches"   data-i18n="nav_watches">Watches</a>
+    <a href="listings.html?cat=jewellery" data-i18n="nav_jewellery">Jewellery</a>
+    <a href="listings.html?cat=other"     data-i18n="nav_other">Other</a>
+  </nav>
+  <div class="header-right">
+    <div class="lang-switcher">
+      <button class="lang-btn"><span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span><span class="lang-arrow">▼</span></button>
+      <div class="lang-dropdown"></div>
+    </div>
+    <a href="pricing.html" class="btn-publish" data-i18n="publish">List with Us</a>
+    <a href="#" class="btn-login" data-i18n="login">Sign In</a>
+    <button class="header-menu-toggle"><i class="fa fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- Category Hero -->
+<div class="category-hero">
+  <div class="container">
+    <div class="category-hero-inner">
+      <div>
+        <h1 id="cat-title">All Luxury Listings</h1>
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <span class="current" id="cat-breadcrumb">All Listings</span>
+        </nav>
+      </div>
+      <div style="color:rgba(255,255,255,0.5);font-size:0.875rem">
+        Showing <strong id="listing-count" style="color:white">12</strong> results
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<main>
+  <div class="section">
+    <div class="container">
+      <div class="listings-layout">
+
+        <!-- ══ SIDEBAR FILTRI ══ -->
+        <aside class="listings-sidebar">
+          <div class="sidebar-title">
+            Filters
+            <span class="sidebar-reset" onclick="document.querySelectorAll('.filter-range input,.filter-select').forEach(e=>e.value='');document.querySelectorAll('.filter-checkbox input').forEach(e=>e.checked=false)">
+              Reset all
+            </span>
+          </div>
+
+          <!-- Prezzo -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-label">Price Range (€)</div>
+            <div class="filter-range">
+              <!-- MODIFICA: valori minimi/massimi a tua scelta -->
+              <input type="number" placeholder="Min" id="filter-price-min" />
+              <input type="number" placeholder="Max" id="filter-price-max" />
+            </div>
+          </div>
+
+          <!-- Anno / Periodo -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-label">Year</div>
+            <div class="filter-range">
+              <!-- MODIFICA: range anni -->
+              <input type="number" placeholder="From" id="filter-year-from" min="1900" max="2025" />
+              <input type="number" placeholder="To"   id="filter-year-to"   min="1900" max="2025" />
+            </div>
+          </div>
+
+          <!-- Paese -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-label">Country</div>
+            <select class="filter-select" id="filter-country">
+              <!-- MODIFICA: aggiungi/rimuovi paesi -->
+              <option value="">All Countries</option>
+              <option>Italy</option>
+              <option>France</option>
+              <option>Monaco</option>
+              <option>Spain</option>
+              <option>Switzerland</option>
+              <option>United Kingdom</option>
+              <option>Germany</option>
+              <option>United Arab Emirates</option>
+              <option>United States</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <!-- Caratteristiche (immobili) -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-label">Features</div>
+            <div class="filter-checkbox">
+              <!-- MODIFICA: aggiungi le feature della tua categoria -->
+              <label><input type="checkbox" value="pool" /> Swimming Pool</label>
+              <label><input type="checkbox" value="sea_view" /> Sea View</label>
+              <label><input type="checkbox" value="garage" /> Private Garage</label>
+              <label><input type="checkbox" value="garden" /> Garden / Park</label>
+              <label><input type="checkbox" value="staff_quarters" /> Staff Quarters</label>
+              <label><input type="checkbox" value="helipad" /> Helipad</label>
+              <label><input type="checkbox" value="beach_access" /> Beach Access</label>
+            </div>
+          </div>
+
+          <!-- Spec tecniche (auto/yacht/jet) -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-label">Condition</div>
+            <select class="filter-select" id="filter-condition">
+              <!-- MODIFICA: tipi di condizione -->
+              <option value="">Any Condition</option>
+              <option>New</option>
+              <option>Like New</option>
+              <option>Pre-owned</option>
+              <option>Classic / Vintage</option>
+            </select>
+          </div>
+
+          <!-- Superficie / Dimensioni -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-label">Size / Length</div>
+            <div class="filter-range">
+              <!-- MODIFICA: unità (m², ft, metri, ecc.) -->
+              <input type="number" placeholder="Min m²" id="filter-size-min" />
+              <input type="number" placeholder="Max m²" id="filter-size-max" />
+            </div>
+          </div>
+
+          <button class="btn-apply-filters" onclick="alert('Filters applied — connect this to your backend or JS filter logic.')">
+            <i class="fa fa-sliders-h"></i> Apply Filters
+          </button>
+        </aside>
+
+        <!-- ══ GRIGLIA RISULTATI ══ -->
+        <div>
+          <div class="listings-top-bar">
+            <p class="listings-count">Showing <strong>1–12</strong> of <strong id="total-count">12</strong> results</p>
+            <div class="listings-sort">
+              <label for="sort-select" style="font-size:0.82rem;color:var(--color-muted)">Sort by:</label>
+              <select id="sort-select">
+                <!-- MODIFICA: criteri di ordinamento -->
+                <option>Price: High to Low</option>
+                <option>Price: Low to High</option>
+                <option>Newest First</option>
+                <option>Most Viewed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="listings-grid-4">
+
+            <!-- ═══ INSERZIONE A1 — modifica qui ═══ -->
+            <article class="listing-card" data-id="a1">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=500&q=80" alt="INSERISCI TITOLO" loading="lazy" />
+                <span class="card-badge featured">Featured</span>
+                <button class="card-fav"><i class="fa-regular fa-heart"></i></button>
+                <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+              </div>
+              <div class="card-body">
+                <p class="card-category">CATEGORIA</p>
+                <h3 class="card-title">INSERISCI TITOLO</h3>
+                <p class="card-price">€ INSERISCI PREZZO</p>
+                <div class="card-specs">
+                  <span class="spec-tag"><i class="fa fa-ruler-combined"></i> SPEC 1</span>
+                  <span class="spec-tag"><i class="fa fa-bed"></i> SPEC 2</span>
+                  <span class="spec-tag"><i class="fa fa-bath"></i> SPEC 3</span>
+                </div>
+                <div class="card-footer">
+                  <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="" /> DEALER</span>
+                  <a href="listing-detail.html" class="btn-card-contact">Details</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- ═══ INSERZIONE A2 — modifica qui ═══ -->
+            <article class="listing-card" data-id="a2">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=500&q=80" alt="INSERISCI TITOLO" loading="lazy" />
+                <span class="card-badge new">New</span>
+                <button class="card-fav"><i class="fa-regular fa-heart"></i></button>
+                <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+              </div>
+              <div class="card-body">
+                <p class="card-category">CATEGORIA</p>
+                <h3 class="card-title">INSERISCI TITOLO</h3>
+                <p class="card-price">€ INSERISCI PREZZO</p>
+                <div class="card-specs">
+                  <span class="spec-tag"><i class="fa fa-tachometer-alt"></i> SPEC 1</span>
+                  <span class="spec-tag"><i class="fa fa-car"></i> SPEC 2</span>
+                  <span class="spec-tag"><i class="fa fa-gas-pump"></i> SPEC 3</span>
+                </div>
+                <div class="card-footer">
+                  <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="" /> DEALER</span>
+                  <a href="listing-detail.html" class="btn-card-contact">Details</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- ═══ INSERZIONE A3 — modifica qui ═══ -->
+            <article class="listing-card" data-id="a3">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=500&q=80" alt="INSERISCI TITOLO" loading="lazy" />
+                <button class="card-fav"><i class="fa-regular fa-heart"></i></button>
+                <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+              </div>
+              <div class="card-body">
+                <p class="card-category">CATEGORIA</p>
+                <h3 class="card-title">INSERISCI TITOLO</h3>
+                <p class="card-price">€ INSERISCI PREZZO</p>
+                <div class="card-specs">
+                  <span class="spec-tag"><i class="fa fa-water"></i> SPEC 1</span>
+                  <span class="spec-tag"><i class="fa fa-ship"></i> SPEC 2</span>
+                  <span class="spec-tag"><i class="fa fa-anchor"></i> SPEC 3</span>
+                </div>
+                <div class="card-footer">
+                  <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="" /> DEALER</span>
+                  <a href="listing-detail.html" class="btn-card-contact">Details</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- ═══ INSERZIONE A4 — modifica qui ═══ -->
+            <article class="listing-card" data-id="a4">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&q=80" alt="INSERISCI TITOLO" loading="lazy" />
+                <button class="card-fav"><i class="fa-regular fa-heart"></i></button>
+                <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+              </div>
+              <div class="card-body">
+                <p class="card-category">CATEGORIA</p>
+                <h3 class="card-title">INSERISCI TITOLO</h3>
+                <p class="card-price">€ INSERISCI PREZZO</p>
+                <div class="card-specs">
+                  <span class="spec-tag"><i class="fa fa-plane"></i> SPEC 1</span>
+                  <span class="spec-tag"><i class="fa fa-users"></i> SPEC 2</span>
+                  <span class="spec-tag"><i class="fa fa-route"></i> SPEC 3</span>
+                </div>
+                <div class="card-footer">
+                  <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="" /> DEALER</span>
+                  <a href="listing-detail.html" class="btn-card-contact">Details</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- ═══ INSERZIONE A5 — modifica qui ═══ -->
+            <article class="listing-card" data-id="a5">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=80" alt="INSERISCI TITOLO" loading="lazy" />
+                <span class="card-badge featured">Featured</span>
+                <button class="card-fav"><i class="fa-regular fa-heart"></i></button>
+                <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+              </div>
+              <div class="card-body">
+                <p class="card-category">CATEGORIA</p>
+                <h3 class="card-title">INSERISCI TITOLO</h3>
+                <p class="card-price">€ INSERISCI PREZZO</p>
+                <div class="card-specs">
+                  <span class="spec-tag"><i class="fa fa-ruler-combined"></i> SPEC 1</span>
+                  <span class="spec-tag"><i class="fa fa-bed"></i> SPEC 2</span>
+                  <span class="spec-tag"><i class="fa fa-swimming-pool"></i> SPEC 3</span>
+                </div>
+                <div class="card-footer">
+                  <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="" /> DEALER</span>
+                  <a href="listing-detail.html" class="btn-card-contact">Details</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- ═══ INSERZIONE A6 — modifica qui ═══ -->
+            <article class="listing-card" data-id="a6">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&q=80" alt="INSERISCI TITOLO" loading="lazy" />
+                <span class="card-badge new">New</span>
+                <button class="card-fav"><i class="fa-regular fa-heart"></i></button>
+                <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+              </div>
+              <div class="card-body">
+                <p class="card-category">CATEGORIA</p>
+                <h3 class="card-title">INSERISCI TITOLO</h3>
+                <p class="card-price">€ INSERISCI PREZZO</p>
+                <div class="card-specs">
+                  <span class="spec-tag"><i class="fa fa-umbrella-beach"></i> SPEC 1</span>
+                  <span class="spec-tag"><i class="fa fa-tree"></i> SPEC 2</span>
+                  <span class="spec-tag"><i class="fa fa-ruler-combined"></i> SPEC 3</span>
+                </div>
+                <div class="card-footer">
+                  <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="" /> DEALER</span>
+                  <a href="listing-detail.html" class="btn-card-contact">Details</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- ═══ INSERZIONE A7 — modifica qui ═══ -->
+            <article class="listing-card" data-id="a7">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=500&q=80" alt="INSERISCI TITOLO" loading="lazy" />
+                <button class="card-fav"><i class="fa-regular fa-heart"></i></button>
+                <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+              </div>
+              <div class="card-body">
+                <p class="card-category">CATEGORIA</p>
+                <h3 class="card-title">INSERISCI TITOLO</h3>
+                <p class="card-price">€ INSERISCI PREZZO</p>
+                <div class="card-specs">
+                  <span class="spec-tag"><i class="fa fa-tachometer-alt"></i> SPEC 1</span>
+                  <span class="spec-tag"><i class="fa fa-horse-head"></i> SPEC 2</span>
+                  <span class="spec-tag"><i class="fa fa-gas-pump"></i> SPEC 3</span>
+                </div>
+                <div class="card-footer">
+                  <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="" /> DEALER</span>
+                  <a href="listing-detail.html" class="btn-card-contact">Details</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- ═══ INSERZIONE A8 — modifica qui ═══ -->
+            <article class="listing-card" data-id="a8">
+              <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=500&q=80" alt="INSERISCI TITOLO" loading="lazy" />
+                <button class="card-fav"><i class="fa-regular fa-heart"></i></button>
+                <span class="card-location"><i class="fa fa-map-marker-alt"></i> INSERISCI LUOGO</span>
+              </div>
+              <div class="card-body">
+                <p class="card-category">CATEGORIA</p>
+                <h3 class="card-title">INSERISCI TITOLO</h3>
+                <p class="card-price">€ INSERISCI PREZZO</p>
+                <div class="card-specs">
+                  <span class="spec-tag"><i class="fa fa-tree"></i> SPEC 1</span>
+                  <span class="spec-tag"><i class="fa fa-swimming-pool"></i> SPEC 2</span>
+                  <span class="spec-tag"><i class="fa fa-home"></i> SPEC 3</span>
+                </div>
+                <div class="card-footer">
+                  <span class="card-dealer"><img class="card-dealer-avatar" src="https://ui-avatars.com/api/?name=D&background=C9A84C&color=fff" alt="" /> DEALER</span>
+                  <a href="listing-detail.html" class="btn-card-contact">Details</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- ═══ INSERZIONI A9–A12 — aggiungi nello stesso modo ═══ -->
+            <!-- Copia uno dei blocchi sopra e modifica i dati -->
+
+          </div><!-- /listings-grid-4 -->
+
+          <!-- Pagination -->
+          <nav class="pagination" aria-label="Pagination">
+            <button class="page-btn" aria-label="Previous page"><i class="fa fa-chevron-left"></i></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <span style="display:flex;align-items:center;padding:0 8px;color:var(--color-muted)">…</span>
+            <button class="page-btn">12</button>
+            <button class="page-btn" aria-label="Next page"><i class="fa fa-chevron-right"></i></button>
+          </nav>
+        </div><!-- /results col -->
+
+      </div><!-- /listings-layout -->
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="header-logo" style="margin-bottom:16px">
+          <div class="logo-mark">L</div>
+          <div><span class="logo-text">LUL</span><span class="logo-tagline">Luxury Unique Listings</span></div>
+        </a>
+        <p>The world's most exclusive marketplace for luxury assets.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="listings.html?cat=homes">Homes</a></li>
+          <li><a href="listings.html?cat=cars">Cars</a></li>
+          <li><a href="listings.html?cat=yachts">Yachts</a></li>
+          <li><a href="listings.html?cat=jets">Private Jets</a></li>
+          <li><a href="listings.html?cat=villas">Villas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About LUL</a></li>
+          <li><a href="pricing.html">For Dealers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+      <!-- ═══ CONTATTI FOOTER — modifica qui ═══ -->
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fa fa-phone"></i><a href="tel:+00000000000">[INSERISCI NUMERO]</a></div>
+        <div class="footer-contact-item"><i class="fa fa-envelope"></i><a href="mailto:info@example.com">[INSERISCI EMAIL]</a></div>
+        <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><a href="#">[INSERISCI WHATSAPP]</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copy">© 2025 LUL — Luxury Unique Listings. All rights reserved.</span>
+      <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Cookies</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/cookies.js"></script>
+<script src="js/app.js"></script>
+<script>
+  // Update category title based on URL param
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const cat    = params.get('cat');
+    const titles = { homes:'Homes & Estates', cars:'Luxury Cars', yachts:'Yachts', jets:'Private Jets', villas:'Villas', watches:'Watches', jewellery:'Jewellery', other:'Collectibles' };
+    if (cat && titles[cat]) {
+      document.getElementById('cat-title').textContent      = titles[cat];
+      document.getElementById('cat-breadcrumb').textContent = titles[cat];
+      document.title = titles[cat] + ' — LUL';
+    }
+  });
+</script>
+</body>
+</html>
